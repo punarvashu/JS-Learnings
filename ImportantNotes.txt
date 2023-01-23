@@ -1,0 +1,165 @@
+
+*Javascript Notes*
+  Chapter 1:
+
+Define Javascript: JAVASCRIPT IS A HIGH-LEVEL,OBJECT-ORIENTED, MULTI-PARADIGM PROGRAMMING LANGUAGE.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Datatypes:
+ There were seven datatypes is Javascript:
+ 1. Number: Floating point numbers. Used for decimals and integers. Ex: let age= 23;
+ 2. String: Sequence of characters . Used for text . Ex: let name= 'abcd';
+ 3. Boolean: Logical type that can only be true or false. Used for taking decisions. Ex: let canDrive= true;
+ 4. Undefined: Value taken by a variable that is not yet defined (‘empty value’)
+ 5. Null: Also means ‘empty value’
+ 6. Symbol (ES2015): Value that is unique and cannot be changed [Not useful for now]
+ 7. BigInt (ES2020): Larger integers than the Number type can hold
+
+NOTE: JavaScript has dynamic typing: We do not have to manually define the data type of the value stored in a variable. Instead, data types are determined             automatically.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+BOOLEAN LOGIC:
+ 1. AND(&&): True when all conditions are true.
+ 2. OR(||): True when any one of the given conditions is true.
+ 3. NOT(!): Inverts true/false value.
+
+NOTE: For linking javascript file to you html just under the script tag put the name of your javascript file with ".js" . EX: <script src= "script.js"></script>
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VALUE & VARIABLE:
+
+Value: It is a piece of data.
+       Ex: 'name' , 15
+Variable: It is like a space in memory that programmer create to hold diffrent values so that they can use it further in program.
+          Ex: number = 15
+
+NOTE: Every value in javascript is of two types 1. Primitive i.e.: let name = 'abcd' or let number = 15
+                                                2. Object i.e.: let name { name= 'abcd' };
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+let, const, var
+
+let: 1. Can be re-assigned after declaration.
+        Ex: If we declare a variable "let age = 30;" we can re-assign in further program as "age = 31;"
+     2. The scope of a let variable is only block scoped. It can’t be accessible outside the particular block ({block})
+     3. If users use the let variable before the declaration, it does not initialize with undefined it will throw error.
+
+const: 1. const keyword has all the properties that are the same as the let keyword, except the user cannot update it.
+       2. The scope of a const variable is only block scoped. The user cannot update the const variable once it is declared.
+
+var: 1. The scope of a var variable is functional scope or global scoped.
+     2. The user can re-declare the variable using var and the user can update var variable.
+     3. If users use the var variable before the declaration, it initializes with the undefined value.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OPERATOR: Operators are used to transform or combine multiple values.
+Types of operators
+ 1. Arithmetic Operators: Used to perform arithmetic operations on numbers. i.e.: let sum= 2+3;
+                          Addtion(+), Subtraction(-), Multiplication(*), Exponentiation(**), Division(/), Modulus(%), Increment(++), Decrement(--).
+
+ 2. Assignment operators: Used to assign values to JavaScript variables. (= , += , -=, *=, /=, %=, **=)
+
+ 3. Comparison Operators: Used to compare two values and always return boolean value(TRUE/FALSE).
+                          Equal to(==), equal value and equal type(===), not equal(!=), not equal value or not equal type(!==), greater than(>), less than(<),
+                          greater than equal to(>=), less than equal to(<=), ternary operator(?)
+
+ 4. Logical Operators: Comparison operators are used in logical statements to determine equality or difference between variables or values.
+                       logical AND(&&), logical OR(||), logical NOT(!).
+
+ 5. Type Operators: typeof - Returns the type of variable.
+                    instanceof - Returns true if an object is an instance of an object type
+
+ 6. Bitwise Operators: Bit operators work on 32 bits numbers.Any numeric operand in the operation is converted into a 32 bit number. The result is converted back to a                         JavaScript number. EX. "5 & 1" is same as "0101 & 0001"
+                       AND(&), OR(|), NOT(~), XOR(^),left shift(<<), right shift(>>), unsigned right shift(>>>).
+
+NOTE: '+' is the only overloaded operator in javasript. It can be used to add and concatenate strings. If you add a number and a string, the result will be a string!
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Template Literals:
+
+1. Use back-ticks (``) rather than the quotes ("") to define a string. Ex: let text = `Hello World!`;
+2. With template literals, you can use both single and double quotes inside a string. Ex: let text = `He's often called "Johnny"`;
+3. Template literals provide an easy way to interpolate variables and expressions into strings.The method is called string interpolation. Syntax: ${...}
+4. Template literals allow variables in strings. Ex: let text = `Welcome ${firstName}, ${lastName}!`;
+5. Automatic replacing of variables or experession with real values is called string interpolation.
+6. Template literals allow expressions in strings. Ex: let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if/else Statement: Used to perform different actions based on different conditions.
+
+1. if Statement: The if statement to specify a block of JavaScript code to be executed if a condition is true.
+                 if (condition) {
+                      //  block of code to be executed if the condition is true
+                 }
+2.else Statement: The else statement to specify a block of code to be executed if the condition is false.
+                  if (condition) {
+                      //  block of code to be executed if the condition is true
+                  } else {
+                     //  block of code to be executed if the condition is false
+                  }
+3.else if Statement: Use the else if statement to specify a new condition if the first condition is false.
+                    if (condition1) {
+                      //  block of code to be executed if condition1 is true
+                     } else if (condition2) {
+                      //  block of code to be executed if the condition1 is false and condition2 is true
+                     } else {
+                       //  block of code to be executed if the condition1 is false and condition2 is false
+                     }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TYPE CONVERSION vs COERCION:
+
+Conversion: When we manually convert the type of variable.
+            Ex: const inputYear = '1991';
+                console.log(inputYear+18); 199118
+                console.log(Number(inputYear) + 18); 1991+18= 2009
+NOTE: If you try to convert a srting to number type then we get 'NaN' as ouput.
+            Ex: console.log(Number('abcd'); NaN
+
+Coercion: When javascript convert the type of variable automatically.
+          Ex. console.log('I am ' + 23 + ' years old'); // I am 23 years old
+NOTE:Except '+' other Arithmetic operator converts srting to number when performed together.
+         Ex: console.log('23' - '10' - 3); //10
+             console.log('23' * '2'); //46
+             console.log('1'+ '1'); //11
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Truthy and Falsy value:
+ 1. Falsy value: Value which are not exactly false but will come false when we try to convert them to boolean.
+    5 falsy values: 0, '', undefined, null, NaN
+    Ex.: console.log(Boolean(0)); // false
+         console.log(Boolean('abcd')); //true 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+== vs ===
+1.Double equals (==) will perform a type conversion when comparing two things.It is also called as loose equality.
+  Ex: console.log('18' == 18); true
+2.Triple equals (===) will do the same comparison as double equals but without type conversion; if the types differ, false is returned.
+  Ex. console.log('18' == 18); //false
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Switch Statement: The switch statement is used to perform different actions based on different conditions.
+Syntax: switch(expression) {
+          case x:
+           // code block
+           break;
+          case y:
+           // code block
+          break;
+         default:                 // The default keyword specifies the code to run if there is no case match:
+
+         // code block
+    }
+
+Note: If you omit the break statement, the next case will be executed even if the evaluation does not match the case.
+      Switch cases use strict comparison (===).
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Statement vs Experssion:
+
+1. Experssion: It is a piece of code which produces a value. Ex.3 + 4 , 1991 ,  true && false && !false
+              
+2. Statement: It a piece of code which produces a value or a sequance of action is also called as statement.
+   Ex.: if (23 > 10) {
+        const str = '23 is bigger';
+       }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Conditional (Ternery) operator: A ternary operator can be used to replace an if..else statement in certain situations.
+                                A ternary operator evaluates a condition and executes a block of code based on the condition.
+
+                                Syntax: condition ? expression1 : expression2
+
+                                 If the condition is true, expression1 is executed.
+                                 If the condition is false, expression2 is executed. 
+
+Ex: const age = 23;
+    // age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
