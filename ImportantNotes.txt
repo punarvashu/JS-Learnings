@@ -227,7 +227,103 @@ Note: There are more array operation method in javascript that can be explored t
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Objects: Objects are variables too. But objects can contain many values. Object values are written as name : value pairs (name and value separated by a colon). 
          Ex: let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
- 
+         The named value in objects is called as Property.
+
+Retrive data from object: Data from object can be retrived by using two method i.e.-
+ 1. Dot notation(.): let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+                     console.log(person.lastName); // "Doe"
+ 2. Bracket Notation([]): let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+                     console.log(person[lastName]); // "Doe"
+NOTE: In bracket notation we can use any expression in place of string while retriving the data from object.
+      Ex: let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+          const nameKey= Name;
+          console.log(person['fisrt' + nameKey]);
+          console.log(person['last' + nameKey]);
+
+Updating the object:
+1. Using Dot notation: person.location= 'India'
+2. Using Bracket notation: person[location]= 'India'
+
+Methods in Object: Methods are functions stored as object properties.
+                   Syntax to access method from object: objectName.methodName();
+
+What is "this" in javascript:
+ 1)the this keyword refers to an object.
+ 2)In strict mode, this is undefined.
+ 3)In an event, this refers to the element that received the event.
+ 4)Methods like call(), apply(), and bind() can refer this to any object.
+
+Ex: const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtmann',
+  birthYeah: 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  hasDriversLicense: true,
+}
+calcAge: function () {
+    this.age = 2037 - this.birthYeah;
+    return this.age;
+  },
+console.log(jonas.age);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LOOP: Loops are handy, if you want to run the same code over and over again, each time with a different value. Loops are very handy when working with arrays.
+
+
+FOR LOOP : The for statement creates a loop with 3 optional expressions:
+           1. Expression 1 is executed (one time) before the execution of the code block.
+
+           2. Expression 2 defines the condition for executing the code block.
+
+           3. Expression 3 is executed (every time) after the code block has been executed.
+Syntax: for (expression 1; expression 2; expression 3) {
+            // code block to be executed
+        }
+
+Break statement: The break statement "jumps out" of a loop.
+                 Ex: for (let i = 0; i < 10; i++) {
+                        if (i === 3) { break; }
+                      text += "The number is " + i + "<br>";
+                     }
+In the example above, the break statement ends the loop ("breaks" the loop) when the loop counter (i) is 3
+
+Continue statement: The continue statement "jumps over" one iteration in the loop.
+                    Ex: for (let i = 0; i < 10; i++) {
+                        if (i === 3) { continue; }
+                        text += "The number is " + i + "<br>";
+                        }
+In the example above, the continue statement skips the value of 3 when the loop counter(i) is 3.
+
+Loop Backward: We can access the array element in in backward direction by runnung the loop in backward direction.
+               Ex: const number = [1, 2, 3, 4, 5, 6, 7,];
+                   for(i= number.length; i>=0; i--){
+                      console.log(number[i])
+                   }
+
+Nested for loop: A nested for loop on the other hand, resides one or more for loop inside an outer for loop.
+                 Syntx: for(let i = 0 ; i < limit; i++){
+                        for(let j = 0 ; j < limit; j++){
+                          // statement
+                   }
+                       // statement for outer loop
+                 }
+
+While Loop: The while loop loops through a block of code as long as a specified condition is true. This loop is used when developer don't know how many times the             counter need to run.
+            Syntx: while (condition) {
+                   // code block to be executed
+                 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------DOM: It stands for "Document object model". It is a structured represantation of HTML document that allows Javascript to access HTML element and style to manipulate         them.The HTML DOM model is constructed as a tree of Objects.
+
+DOM Method:
+1. querySelector(): The querySelector() method returns the first element that matches a CSS selector. To return all matches (not only the first), use the                     querySelectorAll() instead.
+                    Both querySelector() and querySelectorAll() throw a SYNTAX_ERR exception if the selector(s) is invalid.
+   Syntax:         document.querySelector(CSS selectors)
+   Ex    :         Get the first <p> element in with class="example": document.querySelector("p.example");
+                   Change the text of the element with id="demo": document.querySelector("#demo").innerHTML = "Hello World!";
+
+2. addEventListener(): The addEventListener() method attaches an event handler to a document.
+               Syntax: document.addEventListener(event, function, Capture)
+
 
 
 
