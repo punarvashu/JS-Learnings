@@ -163,3 +163,73 @@ Conditional (Ternery) operator: A ternary operator can be used to replace an if.
 Ex: const age = 23;
     // age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');     
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+'strict mode' :
+1. "use strict"; Defines that JavaScript code should be executed in "strict mode".
+2. Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Function in JavaScript:It is a block of code designed to perform a particular task.
+
+Syntax: function name(parameter1, parameter2, parameter3) {
+         // code to be executed
+        }    
+Ex: let x = myFunction(4, 3);   // Function is called, return value will end up in x
+
+function myFunction(a, b) {
+         return a * b;             // Function returns the product of a and b
+       }
+
+Function Declaration: A function declaration also known as a function statement declares a function with a function keyword. The function declaration must have a                       function name.
+                      Syntax: function func(paramA, paramB) {
+                                // Set of statements
+                               } 
+
+Function Expression: A function Expression is similar to a function declaration without the function name. Function expressions can be stored in a variable assignment.
+                     Syntax: let func= function(paramA, paramB) {
+                              // Set of statements
+                             }
+
+Arrow Function: Syntax: let hello = () => {
+                        return "Hello World!";
+                         }
+
+Function calling other function: In JavaScript we call one function inside the other function.
+
+Ex: 
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+
+  const juice = `Juice with ${applePieces} piece of apple and ${orangePieces} pieces of orange.`;
+  return juice;
+}
+console.log(fruitProcessor(2, 3));
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Arrays: An array is a special variable, which can hold more than one value.
+        Syntax: const array_name = [item1, item2, ...];
+                const array_name = new Array(item1, item2, ....); 
+        Ex: const cars = ["Saab", "Volvo", "BMW"];
+
+Accessing array element: An array element can be accessed by referring to the index number. i.e.: console.log(array_name[index]);
+
+Array element can be changed later in program.
+Ex: const cars = ["Saab", "Volvo", "BMW"];
+    cars[0] = "Alto"; // changes the 0th index of array cars.
+
+Array operation:
+
+push(): Adds new elements to the end of an array, and returns the new length. Syntax: array_name.push(value);
+
+Note: There are more array operation method in javascript that can be explored through internet.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Objects: Objects are variables too. But objects can contain many values. Object values are written as name : value pairs (name and value separated by a colon). 
+         Ex: let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+ 
+
+
+
+
+
