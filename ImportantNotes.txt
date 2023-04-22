@@ -324,8 +324,472 @@ DOM Method:
 2. addEventListener(): The addEventListener() method attaches an event handler to a document.
                Syntax: document.addEventListener(event, function, Capture)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+One more defination of JavaScript: JAVASCRIPT IS A HIGH-LEVEL, PROTOTYPE-BASED OBJECT-ORIENTED, MULTI-PARADIGM, INTERPRETED OR JUST-IN-TIME COMPILED, DYNAMIC, SINGLE-                                     THREADED, GARBAGE-COLLECTED PROGRAMMING LANGUAGE WITH FIRST-CLASS FUNCTIONS AND A NON-BLOCKING EVENT LOOP CONCURRENCY MODEL.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Destructing Arrays: It is the process by which we can extract only that items from array that is needed not whole array.
+                    When destructuring arrays, the order that variables are declared is important.
 
+Example: Without destructuring:                           
+const vehicles = ['mustang', 'f-150', 'expedition'];
+// old way
+const car = vehicles[0];
+const truck = vehicles[1];
+const suv = vehicles[2];
 
+With destructuring: 
 
+const vehicles = ['mustang', 'f-150', 'expedition'];
+const [car, truck, suv] = vehicles;
+
+If we only want the car and suv we can simply leave out the truck but keep the comma:
+const [car,, suv] = vehicles;
+
+Array destructuring and Default values: If you are taking a value from the array and that value is undefined, then you can assign a default value to a variable.
+
+Swapping Variables: The values of the two variables can be swapped in one destructuring expression. The array destructuring makes it easy to swap the values of                     variables without using any temporary variable.
+Ex: var x = 100, y = 200;  
+    [x, y] = [y, x];  
+    console.log(x); // 200  
+    console.log(y); // 100 
+
+Parsing returned array from functions : A function can return an array of values. It is always possible to return an array from a function, but array destructuring                                        makes it more concise to parse the returned array from functions.
+Ex: function array() {  
+    return [100, 200, 300];  
+}  
+var [x, y, z] = array();
+console.log(x); //100
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Destructuring Objects: It is similar to array destructuring except that instead of values being pulled out of an array, the properties (or keys) and their                        corresponding values can be pulled out from an object.
+                       When destructuring the objects, we use keys as the name of the variable. The variable name must match the property (or keys) name of the object.                        If it does not match, then it receives an undefined value. This is how JavaScript knows which property of the object we want to assign.
+Ex: const num = {x: 100, y: 200};  
+    const {x, y} = num;  
+    console.log(x); // 100
+
+Like array destructuring, a default value can be assigned to the variable if the value unpacked from the object is undefined.
+Example: const {x = 100, y = 200} = {x: 500};  
+         console.log(x); // 500   value: reassigned
+         console.log(y); // 200 
+
+Assigning new variable names: We can assign a variable with a different name than the property of the object.
+Example: const num = {x: 100, y: 200};  
+         const {x: new1, y: new2} = num;  
+   
+         console.log(new1); //100   
+         console.log(new2); //200   
+
+Assignment without declaration: If the value of the variable is not assigned when you declare it, then you can assign its value during destructuring.
+Example: let name, division;  
+         ({name, division} = {name: 'Anil', division: 'First'});   
+          console.log(name); // Anil  
+          console.log(division); // First  
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Spread Operator: The JavaScript spread operator (...) allows us to quickly copy all or part of an existing array or object into another array or object.
+           Ex:   const numbersOne = [1, 2, 3];
+                 const numbersTwo = [4, 5, 6];
+                 const numbersCombined = [...numbersOne, ...numbersTwo];
+
+The spread operator is often used in combination with destructuring.
+Ex: Assign the first and second items from numbers to variables and put the rest in an array:
+    const numbers = [1, 2, 3, 4, 5, 6];
+    const [one, two, ...rest] = numbers;
+
+Spread operator can use the spread operator with objects too.
+Ex: const myVehicle = {
+  brand: 'Ford',
+  model: 'Mustang',
+  color: 'red'
+}
+const updateMyVehicle = {
+  type: 'car',
+  year: 2021, 
+  color: 'yellow'
+}
+const myUpdatedVehicle = {...myVehicle, ...updateMyVehicle}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Rest pattern and parameter: The rest parameter is an improved way to handle function parameters, allowing us to more easily handle various inputs as parameters in a                             function. The rest parameter syntax allows us to represent an indefinite number of arguments as an array. With the help of a rest                             parameter, a function can be called with any number of arguments, no matter how it was defined.
+Note: When … is at the end of the function parameter, it is the rest parameter. It stores n number of parameters as an array.
+
+Ex: Without rest parameter: 
+    function fun(a, b){
+        return a + b;
+    }
+    console.log(fun(1, 2)); // 3
+    console.log(fun(1, 2, 3, 4, 5)); // 3 
+
+With Rest parameter: 
+function fun(...input){
+        let sum = 0;
+        for(let i of input){
+            sum+=i;
+        }
+        return sum;
+    }
+    console.log(fun(1,2)); //3
+    console.log(fun(1,2,3)); //6
+    console.log(fun(1,2,3,4,5)); //15 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nullish Coalescing Operator(??): This operator returns the right hand value if the left hand value is null or undefined. If not null or undefined then it will return                                    left hand value.
+Syntax: variable ?? default_value
+Example: function foo(bar) {
+         bar = bar ?? 42;
+         console.log(bar);
+        }
+         foo();  // 42
+         foo(0); // 0
+In above example, If the passed variable is either null or undefined and only if it’s those two values, the default value would be returned. In all other cases including 0, empty string, or false, the value of the variable is returned and not the default value.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The For Of Loop: The JavaScript for of statement loops through the values of an iterable object.
+Example: 
+const cars = ["BMW", "Volvo", "Mini"];
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Optional Chaining (?.): The optional chaining operator (?.) allows you to access the value of a property located deep within a chain of objects without explicitly                         checking if each reference in the chain is null or undefined. If one of the references in the chain is null or undefined, the optional chaining                         operator (?.) will short circuit and return undefined.
+                        The Optional Chaining Operator allows a developer to handle many of those cases without repeating themselves and/or assigning intermediate                         results in temporary variables:
+Ex:                     With optional chaining we can write this (let Value = user.dog?.name;) instead of (let Value = user.dog && user.dog.name;)
+
+Example: Optional Chaining with Object:
+ 
+const user = {
+  dog: {
+    name: "Alex"
+  }
+};
+ 
+console.log(user.cat?.name); //undefined
+console.log(user.dog?.name); //Alex
+console.log(user.cat.name);
+
+Example Optional Chaining with Function Call:
+
+let user1 = () => console.log("Alex");
+let user2 = {
+  dog(){
+    console.log("I am Alex");
+  }
+}
+let user3 = {};
+ 
+user1?.();       // Alex
+user2.dog?.();   // I am Alex
+user3.dog();     // ERROR - Uncaught TypeError:
+                 // user3.dog is not a function.
+user3.dog?.();   // Will not generate any error.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SETS: A JavaScript Set is a collection of unique values.Each value can only occur once in a Set.A Set can hold any value of any data type.
+
+Some useful SET methos: 
+1)new Set(): Creates a new Set
+2)add(): Adds a new element to the Set
+3)delete() :Removes an element from a Set
+4)has()	: Returns true if a value exists
+5)clear():Removes all elements from a Set
+6)forEach():Invokes a callback for each element
+7)values():Returns an Iterator with all the values in a Set
+8)keys(): Same as values()
+9)entries():Returns an Iterator with the [value,value] pairs from a Set
+
+Creation of new SET: const letters = new Set(["a","b","c"]); or 
+                     const letter = new Set(); 
+                     letters.add("a");
+
+A Set has no keys. entries() returns [value,value] pairs instead of [key,value] pairs.This makes Sets compatible with Maps.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MAPS: A Map holds key-value pairs where the keys can be any datatype. A Map remembers the original insertion order of the keys. A Map has a property that represents       the size of the map.
+Some useful methon MAP methods: 
+new Map()	Creates a new Map object
+set()	Sets the value for a key in a Map
+get()	Gets the value for a key in a Map
+clear()	Removes all the elements from a Map
+delete()	Removes a Map element specified by a key
+has()	Returns true if a key exists in a Map
+forEach()	Invokes a callback for each key/value pair in a Map
+entries()	Returns an iterator object with the [key, value] pairs in a Map
+keys()	Returns an iterator object with the keys in a Map
+values()	Returns an iterator object of the values in a Map
+
+You can create a JavaScript Map by:Passing an Array to new Map() and Create a Map and use Map.set().
+Example: const fruits = new Map([
+         ["apples", 500],
+         ["bananas", 300],
+         ["oranges", 200]
+          ])
+
+Iterate through the MAP:The Map.forEach method is used to loop over the map with the given function and executes the given function over each key-value pair.
+Syntax: myMap.forEach(callback, value, key, thisArg)
+Example: 
+    // Creating a map using Map object
+    let mp=new Map()
+     
+    // Adding values to the map
+    mp.set("a",1);
+    mp.set("b",2);
+    mp.set("c",3);
+     
+    // Logging map object to console
+    mp.forEach((values,keys)=>{
+      console.log(values,keys)
+    })
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Fuctions: A JavaScript function is a block of code designed to perform a particular task. A JavaScript function is executed when "something" invokes it (calls it).
+Example: 
+// Function to compute the product of p1 and p2
+function myFunction(p1, p2) {
+  return p1 * p2;
+}
+
+Function Invocation: 
+1)When an event occurs (when a user clicks a button)
+2)When it is invoked (called) from JavaScript code
+3)Automatically (self invoked)
+
+Defualt Parameter: If a function in JavaScript is called with missing arguments (less than declared), the missing values are set to undefined.
+Example 1: 
+function myFunction(x, y) {
+  if (y === undefined) {
+    y = 2;
+  }
+}
+
+Example 2: 
+function myFunction (x, y = 2) {
+  // function code
+}
+
+Pass by value: Pass By Value: In Pass by value, function is called by directly passing the value of the variable as an argument. So any changes made inside the function does not affect the original value.
+
+In Pass by value, parameters passed as an arguments create its own copy. So any changes made inside the function is made to the copied value not to the original value.
+Ex: 
+function Passbyvalue(a, b) {
+	let tmp;
+	tmp = b;
+	b = a;
+	a = tmp;
+	console.log(`Inside Pass by value
+		function -> a = ${a} b = ${b}`);
+}
+
+let a = 1;
+let b = 2;
+console.log(`Before calling Pass by value
+		Function -> a = ${a} b = ${b}`);
+
+Passbyvalue(a, b);
+
+console.log(`After calling Pass by value
+	Function -> a =${a} b = ${b}`);
+
+Output: 
+Before calling Pass by value Function -> a = 1 b = 2
+Inside Pass by value function -> a = 2 b = 1
+After calling Pass by value Function -> a =1 b = 2
+
+Pass by Referance: In Pass by Reference, Function is called by directly passing the reference/address of the variable as an argument. So changing the value inside the function also change the original value. In JavaScript array and Object follows pass by reference property.
+In Pass by reference, parameters passed as an arguments does not create its own copy, it refers to the original value so changes made inside function affect the original value.
+
+Ex:
+function PassbyReference(obj) {
+	let tmp = obj.a;
+	obj.a = obj.b;
+	obj.b = tmp;
+
+	console.log(`Inside Pass By Reference
+		Function -> a = ${obj.a} b = ${obj.b}`);
+}
+
+let obj = {
+	a: 10,
+	b: 20
+
+}
+console.log(`Before calling Pass By Reference
+	Function -> a = ${obj.a} b = ${obj.b}`);
+
+PassbyReference(obj)
+
+console.log(`After calling Pass By Reference
+	Function -> a = ${obj.a} b = ${obj.b}`);
+
+Output: 
+Before calling Pass By Reference Function -> a = 10 b = 20
+Inside Pass By Reference Function -> a = 20 b = 10
+After calling Pass By Reference Function -> a = 20 b = 10
+
+Note: In Pass by Reference, we are mutating the original value. when we pass an object as an arguments and update that object’s reference in the function’s context, that won’t affect the object value. But if we mutate the object internally, It will affect the object 
+
+First class Function: A programming language is said to have First-class functions if functions in that language are treated like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function.
+JavaScript treat function as a first-class-citizens. This means that functions are simply a value and are just another type of object.
+
+Example:
+const Arithmetics = {
+	add:(a, b) => {
+		return `${a} + ${b} = ${a+b}`;
+	},
+	subtract:(a, b) => {
+		return `${a} - ${b} = ${a-b}`
+	},
+	multiply:(a, b) => {
+		return `${a} * ${b} = ${a*b}`
+	},
+	division:(a, b) => {
+		if(b!=0) return `${a} / ${b} = ${a/b}`;
+		return `Cannot Divide by Zero!!!`;
+	}
+
+}
+
+console.log(Arithmetics.add(100, 100));
+console.log(Arithmetics.subtract(100, 7));
+console.log(Arithmetics.multiply(5, 5));
+console.log(Arithmetics.division(100, 5));
+
+In the above program, functions are stored as a variable in an object.
+"100 + 100 = 200"
+"100 - 7 = 93"
+"5 * 5 = 25"
+"100 / 5 = 20"
+
+Higher Order Function: A function that receives another function as an argument or that returns a new function or both is called Higher-order function. Higher-order functions are only possible because of the First-class function.
+Example:
+const greet = function(name){
+	return function(m){
+	
+		console.log(`Hi!! ${name}, ${m}`);
+	}
+}
+
+const greet_message = greet('ABC');
+greet_message("Welcome")
+
+Note: The function that we pass as an argument to another function is called the callback function.Functions such as filter(), map(), reduce(), some(), etc, all are       examples of Higher-Order Functions.
+
+Function accepting callback function: A callback is a function passed as an argument to another function.This technique allows a function to call another function. A                                       callback function can run after another function has finished.
+Example:
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+
+Using a callback, you could call the calculator function (myCalculator) with a callback (myCallback), and let the calculator function run the callback after the calculation is finished.
+
+In the example above, myDisplayer is a called a callback function.Note
+When you pass a function as an argument, remember not to use parenthesis.
+myCalculator(5, 5, myDisplayer);It is passed to myCalculator() as an argument.
+
+call() Method: The call() method is a predefined JavaScript method. It can be used to invoke (call) a method with an owner object as an argument (parameter).
+               With call(), an object can use a method belonging to another object.
+Example: 
+const person = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const person1 = {
+  firstName:"John",
+  lastName: "Doe"
+}
+const person2 = {
+  firstName:"Mary",
+  lastName: "Doe"
+}
+
+// This will return "John Doe":
+person.fullName.call(person1);
+
+call() method with argument: 
+Example:
+const person = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  }
+}
+const person1 = {
+  firstName:"John",
+  lastName: "Doe"
+}
+person.fullName.call(person1, "Oslo", "Norway");
+
+bind() method: With the bind() method, an object can borrow a method from another object.
+
+Example:
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member);
+
+In above example creates 2 objects (person and member).The member object borrows the fullname method from the person object.
+
+Note: By the use of bind() method we can preserve "this" keyword.
+Example:
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  display: function () {
+    let x = document.getElementById("demo");
+    x.innerHTML = this.firstName + " " + this.lastName;
+  }
+}
+
+setTimeout(person.display, 3000);
+
+In above example will try to display the person name after 3 seconds, but it will display undefined instead.
+
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  display: function () {
+    let x = document.getElementById("demo");
+    x.innerHTML = this.firstName + " " + this.lastName;
+  }
+}
+
+let display = person.display.bind(person);
+setTimeout(display, 3000);
+
+In above example the bind() method is used to bind person.display to person will display the person name after 3 seconds:
+
+CLOSER:A closure is a feature of JavaScript that allows inner functions to access their outer scope. Closure helps in binding a function to its outer boundary and is        created automatically whenever a function is created. A block is also treated as a scope since ES6. Since JavaScript is event-driven so closures are useful as        it helps to maintain the state between events.
+       In other words, closure is created when a child function keep the environment of the parent scope even after the parent function has already executed.
+Example: 
+function numberGenerator() {
+  // Local “free” variable that ends up within the closure
+  var num = 1;
+  function checkNumber() { 
+    console.log(num);
+  }
+  num++;
+  return checkNumber;
+}
+
+var number = numberGenerator();
+number(); // 2    
+
+Explanation: 
+In the example above, the function numberGenerator creates a local “free” variable num (a number) and checkNumber (a function which prints num to the console).
+The function checkNumber doesn’t have any local variables of its own — however, it does have access to the variables within the outer function, numberGenerator, because of a closure.
+Therefore, it can use the variable num declared in numberGenerator to successfully log it to the console even after numberGenerator has returned.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+     
 
 
